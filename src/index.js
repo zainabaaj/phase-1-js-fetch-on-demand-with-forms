@@ -8,15 +8,14 @@ const init = () => {
 
         console.log(input.value);
 
-        fetch(`./db.json`)
+        fetch(`http://localhost:3000/movies/${input.value}`)
             .then(response => response.json())
             .then(data => {
-                const movie = data.movies[input.value - 1]
                 const title = document.querySelector('section#movieDetails h4');
                 const summary = document.querySelector('section#movieDetails p');
 
-                title.innerText = movie.title;
-                summary.innerText = movie.summary;
+                title.innerText = data.title;
+                summary.innerText = data.summary;
             });
     });
 }
